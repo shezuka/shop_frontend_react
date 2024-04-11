@@ -13,17 +13,17 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      #7BC9FF
-    )
-    #7BC9FF;
+  /*color: rgb(var(--foreground-rgb));*/
+  /*background: linear-gradient(*/
+  /*    to bottom,*/
+  /*    transparent,*/
+  /*    #7BC9FF*/
+  /*  )*/
+  /*  #7BC9FF;*/
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  /*.text-balance {*/
+  /*  text-wrap: balance;*/
+  /*}*/
 }

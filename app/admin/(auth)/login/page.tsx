@@ -23,7 +23,7 @@ export default function AdminLoginPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/auth/login", {
+      const res = await axios.post("/admin/auth/login", {
         username,
         password,
       });
@@ -86,7 +86,7 @@ export default function AdminLoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit" fullWidth>
+          <Button type="submit" fullWidth variant="secondary">
             Submit
           </Button>
         </form>

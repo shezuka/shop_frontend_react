@@ -5,7 +5,7 @@ type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & {
-  variant?: "primary" | "secondary" | "tertiary";
+  variant?: "primary" | "secondary";
   size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
   disabled?: boolean;
@@ -42,11 +42,9 @@ const Button: React.FC<ButtonProps> = ({
   ];
 
   if (variant === "primary") {
-    classes.push("bg-blue-500", "hover:bg-blue-600");
+    classes.push("bg-primary-500", "hover:bg-primary-600");
   } else if (variant === "secondary") {
-    classes.push("bg-gray-700", "hover:bg-gray-800");
-  } else if (variant === "tertiary") {
-    classes.push("bg-gray-300", "hover:bg-gray-400");
+    classes.push("bg-secondary-700", "hover:bg-secondary-800");
   }
 
   if (size === "sm") {

@@ -46,7 +46,7 @@ export default function InputField({
           type={type}
           autoComplete={autoComplete}
           required={required}
-          className={`text-xl block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-blue-900 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${className}`}
+          className={`text-xl block w-full rounded-md border-0 p-1.5 text-primary-900 shadow-sm ring-1 ring-inset ring-primary-900 placeholder:text-secondary-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 ${className}`}
           value={value}
           onChange={onChange}
           {...props}
