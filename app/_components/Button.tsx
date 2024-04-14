@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
-type ButtonProps = DetailedHTMLProps<
+export type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & {
@@ -10,7 +10,9 @@ type ButtonProps = DetailedHTMLProps<
   fullWidth?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  className?: string;
   onClick?: () => void;
+  active?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -21,6 +23,8 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   loading = false,
   onClick,
+  className = "",
+  active = false,
   ...props
 }) => {
   const classes = [
@@ -42,9 +46,15 @@ const Button: React.FC<ButtonProps> = ({
   ];
 
   if (variant === "primary") {
-    classes.push("bg-primary-500", "hover:bg-primary-600");
+    classes.push(
+      `bg-primary-${active ? "800" : "500"}`,
+      `hover:bg-primary-${active ? "900" : "600"}`,
+    );
   } else if (variant === "secondary") {
-    classes.push("bg-secondary-700", "hover:bg-secondary-800");
+    classes.push(
+      `bg-secondary-${active ? "900" : "700"}`,
+      `hover:bg-secondary-${active ? "950" : "800"}`,
+    );
   }
 
   if (size === "sm") {
@@ -63,6 +73,10 @@ const Button: React.FC<ButtonProps> = ({
 
   if (loading) {
     classes.push("animate-spin");
+  }
+
+  if (className) {
+    classes.push(className);
   }
 
   return (
