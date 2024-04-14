@@ -20,11 +20,13 @@ function CrudListPage({
   itemsApiUrl,
   listViewComponent,
   create,
+  edit,
 }: Readonly<{
   pageTitle: string;
   fields: CrudItemFieldType[];
   itemsApiUrl: string;
   create?: boolean;
+  edit?: boolean;
   listViewComponent?: (props: CrudListViewPropsType) => React.ReactElement;
 }>) {
   const router = useRouter();
@@ -92,7 +94,11 @@ function CrudListPage({
         />
       </div>
       <div className="mt-3 overflow-auto flex-1">
-        <ListViewComponent items={loading ? [] : items} fields={fields} />
+        <ListViewComponent
+          items={loading ? [] : items}
+          fields={fields}
+          edit={edit}
+        />
         {loading ? (
           <div className="flex flex-1 h-full justify-center items-center">
             <LoaderSpinner />

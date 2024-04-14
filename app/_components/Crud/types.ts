@@ -7,6 +7,7 @@ export type CrudItemFieldType = {
 
 export type CrudListViewPropsType = {
   fields: CrudItemFieldType[];
+  edit?: boolean;
   items: any[];
 };
 

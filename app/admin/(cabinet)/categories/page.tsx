@@ -9,6 +9,7 @@ function CategoriesPage() {
       fields={CategoryFields}
       itemsApiUrl="/admin/categories"
       create
+      edit
     />
   );
 }

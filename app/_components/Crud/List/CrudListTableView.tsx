@@ -31,8 +31,11 @@ function CrudListTableView(props: CrudListViewPropsType) {
               {props.fields.map((field) => (
                 <td
                   key={field.name}
-                  className="py-2 px-4 cursor-pointer"
-                  onClick={() => onItemClicked(it)}
+                  className={`py-2 px-4 ${props.edit === true ? "cursor-pointer" : ""}`}
+                  onClick={() => {
+                    if (props.edit !== true) return;
+                    onItemClicked(it);
+                  }}
                 >
                   <CrudListItemTextField item={it} field={field} />
                 </td>
