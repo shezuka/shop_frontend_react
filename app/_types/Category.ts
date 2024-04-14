@@ -1,3 +1,5 @@
+import { CrudItemFieldType } from "@/app/_components/Crud/types";
+
 export type CategoryType = {
   id: number;
   title: string;
@@ -5,3 +7,23 @@ export type CategoryType = {
   created_at: string;
   updated_at: string;
 };
+
+export const CategoryFields: CrudItemFieldType[] = [
+  {
+    name: "title",
+    label: "Title",
+    type: "string",
+  },
+  {
+    name: "created_at",
+    label: "Created at",
+    type: "datetime",
+    editable: false,
+  },
+  {
+    name: "updated_at",
+    label: "Updated at",
+    type: "datetime",
+    editable: false,
+  },
+];

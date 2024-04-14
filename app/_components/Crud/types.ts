@@ -2,6 +2,7 @@ export type CrudItemFieldType = {
   name: string;
   label: string;
   type: "number" | "boolean" | "string" | "datetime";
+  editable?: boolean;
 };
 
 export type CrudListViewPropsType = {
@@ -12,6 +13,34 @@ export type CrudListViewPropsType = {
 export type CrudListItemFieldPropsType = {
   field: CrudItemFieldType;
   item: any;
+};
+
+export type CrudCreateItemPropsType = {
+  pageTitle: string;
+  fields: CrudItemFieldType[];
+  createItemApiUrl: string;
+  onSuccessRedirectUri: string;
+};
+
+export type CrudEditItemPropsType = {
+  itemId: number;
+  pageTitle: string;
+  fields: CrudItemFieldType[];
+  getItemApiUrl: string;
+  editItemApiUrl: string;
+  onSuccessRedirectUri: string;
+};
+
+export type CrudManageItemPropsType = {
+  item: any;
+  fields: CrudItemFieldType[];
+  onFieldChange: (fieldName: string, newValue: any) => void;
+};
+
+export type CrudEditItemFieldPropsType = {
+  item: any;
+  field: CrudItemFieldType;
+  onFieldChange: (fieldName: string, newValue: any) => void;
 };
 
 export type PaginationPropsType = {

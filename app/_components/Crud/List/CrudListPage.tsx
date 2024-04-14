@@ -10,23 +10,35 @@ import CrudListTableView from "@/app/_components/Crud/List/CrudListTableView";
 import LoaderSpinner from "@/app/_components/Loader/LoaderSpinner";
 import Pagination from "@/app/_components/Crud/Pagination";
 import Button from "@/app/_components/Button";
+import PageTitle from "@/app/_components/PageTitle";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 function CrudListPage({
   pageTitle,
   fields,
   itemsApiUrl,
   listViewComponent,
+  create,
 }: Readonly<{
   pageTitle: string;
   fields: CrudItemFieldType[];
   itemsApiUrl: string;
+  create?: boolean;
   listViewComponent?: (props: CrudListViewPropsType) => React.ReactElement;
 }>) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [loading, setLoading] = React.useState(true);
   const [items, setItems] = React.useState([]);
   const [page, setPage] = React.useState(0);
-  const [pageSize, setPageSize] = React.useState(10);
+  const [pageSize, setPageSize] = React.useState(20);
   const [totalItems, setTotalItems] = React.useState(0);
+
+  const onCreateClicked = React.useCallback(() => {
+    router.push(`${pathname}/create`);
+  }, [router, pathname]);
 
   React.useEffect(() => {
     let cancel = false;
@@ -40,8 +52,6 @@ function CrudListPage({
         if (cancel) return;
         setTotalItems(parseInt(resp.headers["x-total-count"]));
         setItems(resp.data);
-      })
-      .finally(() => {
         setLoading(false);
       });
 
@@ -55,7 +65,12 @@ function CrudListPage({
   ) => React.ReactElement = listViewComponent || CrudListTableView;
   return (
     <>
-      <h1 className="text-3xl mb-3">{pageTitle}</h1>
+      <PageTitle>{pageTitle}</PageTitle>
+      {create === true ? (
+        <div className="mb-2 flex flex-row">
+          <Button onClick={onCreateClicked}>Create new item</Button>
+        </div>
+      ) : null}
       <div className="flex flex-row items-right justify-between">
         <div className="flex flex-row rounded-md items-center mr-5 bg-primary-500">
           <span className="px-2 text-primary-100">Page size:</span>
