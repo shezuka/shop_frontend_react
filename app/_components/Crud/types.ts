@@ -7,8 +7,9 @@ export type CrudItemFieldType = {
 
 export type CrudListViewPropsType = {
   fields: CrudItemFieldType[];
-  edit?: boolean;
   items: any[];
+  onEditClick?: (item: any) => void;
+  onDeleteClick?: (item: any) => void;
 };
 
 export type CrudListItemFieldPropsType = {

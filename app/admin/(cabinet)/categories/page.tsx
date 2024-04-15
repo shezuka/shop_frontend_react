@@ -8,6 +8,7 @@ function CategoriesPage() {
       pageTitle={"Categories"}
       fields={CategoryFields}
       itemsApiUrl="/admin/categories"
+      deleteUri="/admin/categories"
       create
       edit
     />
