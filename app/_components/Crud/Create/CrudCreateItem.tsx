@@ -59,13 +59,11 @@ function CrudCreateItem(props: CrudCreateItemPropsType) {
   return (
     <>
       <PageTitle>{props.pageTitle}</PageTitle>
-      {errors.length
-        ? errors.map((it) => (
-            <div key={it} className="text-red-500">
-              {it}
-            </div>
-          ))
-        : null}
+      {errors.map((it) => (
+        <div key={it} className="text-red-500">
+          {it}
+        </div>
+      ))}
       {loading ? (
         <div className="h-full flex justify-center items-center">
           <LoaderSpinner />

@@ -11,6 +11,7 @@ import CrudManageItem from "@/app/_components/Crud/Item/CrudManageItem";
 
 function CrudEditItem(props: CrudEditItemPropsType) {
   const router = useRouter();
+  const [errors, setErrors] = React.useState<string[]>([]);
   const [loading, setLoading] = React.useState(true);
   const [itemData, setItemData] = React.useState({});
 
@@ -18,6 +19,7 @@ function CrudEditItem(props: CrudEditItemPropsType) {
     (e: FormEvent) => {
       e.preventDefault();
       setLoading(true);
+      setErrors([]);
       axios
         .put(`${props.editItemApiUrl}/${props.itemId}`, itemData)
         .then(() => {
@@ -26,9 +28,32 @@ function CrudEditItem(props: CrudEditItemPropsType) {
         .catch((e) => {
           console.error(e);
           setLoading(false);
+          if (e.response) {
+            if (e.response.status === 400) {
+              const data = e.response.data as any;
+              setErrors([data.message]);
+            } else if (e.response.status === 422) {
+              let data = e.response.data as any;
+              data = data.detail.map((error: any) => {
+                const fieldName = error.loc[error.loc.length - 1];
+                const fieldData = props.fields.find(
+                  (it) => it.name === fieldName,
+                );
+                return `${fieldData?.label}: ${error.msg}`;
+              });
+              setErrors(data);
+            }
+          }
         });
     },
-    [props.editItemApiUrl, props.onSuccessRedirectUri, itemData, router],
+    [
+      props.itemId,
+      props.fields,
+      props.editItemApiUrl,
+      props.onSuccessRedirectUri,
+      itemData,
+      router,
+    ],
   );
 
   React.useEffect(() => {
@@ -56,6 +81,11 @@ function CrudEditItem(props: CrudEditItemPropsType) {
         </div>
       ) : (
         <form className="h-full" onSubmit={onSubmit}>
+          {errors.map((it) => (
+            <div key={it} className="text-red-500">
+              {it}
+            </div>
+          ))}
           <div className="flex flex-col h-full">
             <div className="flex-1 my-2">
               <CrudManageItem
