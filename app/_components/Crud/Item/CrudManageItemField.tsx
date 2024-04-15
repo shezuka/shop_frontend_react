@@ -6,6 +6,7 @@ import InputField from "@/app/_components/InputField";
 import AssetUploader from "@/app/_components/AssetUploader";
 import { Input } from "postcss";
 import TextArea from "@/app/_components/TextArea";
+import ApiAutocomplete from "@/app/_components/ApiAutocomplete";
 
 function CrudManageItemField({
   field,
@@ -30,6 +31,7 @@ function CrudManageItemField({
   let InputElement: any = InputField;
   let inputType = "text";
   let accept = "image/png,image/jpeg,image/jpg";
+  let additionalProps: any = {};
   let inputHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     onFieldChange(field.name, e.target.value);
 
@@ -51,6 +53,13 @@ function CrudManageItemField({
     inputHandler = (newImageId) => onFieldChange(field.name, newImageId);
   } else if (field.type === "text") {
     InputElement = TextArea;
+  } else if (field.type === "reference") {
+    InputElement = ApiAutocomplete;
+    inputHandler = (newReferenceId) =>
+      onFieldChange(field.name, newReferenceId);
+    additionalProps = field.referenceOptions;
+    additionalProps.exceptIds = [];
+    if (item.id) additionalProps.exceptIds.push(item.id);
   }
 
   return (
@@ -63,6 +72,7 @@ function CrudManageItemField({
         accept={accept}
         showImage
         removable
+        {...additionalProps}
       />
     </div>
   );

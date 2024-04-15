@@ -21,6 +21,16 @@ export const CategoryFields: CrudItemFieldType[] = [
     type: "string",
   },
   {
+    name: "parent_category_id",
+    label: "Parent Category",
+    type: "reference",
+    referenceOptions: {
+      labelFieldName: "title",
+      searchApi: "/admin/categories",
+      editLink: "/admin/categories",
+    },
+  },
+  {
     name: "image_id",
     label: "Image",
     type: "image",

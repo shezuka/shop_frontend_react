@@ -1,28 +1,33 @@
 import React from "react";
 import { generateRandomString } from "@/app/_lib/RandomString";
 
-export default function InputField({
-  id = "",
-  label = "",
-  name = "",
-  type = "text",
-  autoComplete = "",
-  required = false,
-  className = "",
-  value = "",
-  onChange = () => null,
-  ...props
-}: Readonly<{
-  id?: string;
-  label?: string;
-  name?: string;
-  type?: string;
-  autoComplete?: string;
-  required?: boolean;
-  className?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}>) {
+function InputField(
+  {
+    id = "",
+    label = "",
+    name = "",
+    type = "text",
+    autoComplete = "",
+    required = false,
+    className = "",
+    value = "",
+    disabled = false,
+    onChange = () => null,
+    ...props
+  }: Readonly<{
+    id?: string;
+    label?: string;
+    name?: string;
+    type?: string;
+    autoComplete?: string;
+    required?: boolean;
+    className?: string;
+    value?: string;
+    disabled?: boolean;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  }>,
+  ref: React.Ref<HTMLInputElement>,
+) {
   const [usingId, setUsingId] = React.useState(id);
 
   React.useEffect(() => {
@@ -42,16 +47,20 @@ export default function InputField({
       <div className={`mt-2 ${className}`}>
         <input
           id={usingId}
+          ref={ref}
           name={name}
           type={type}
           autoComplete={autoComplete}
           required={required}
-          className={`text-xl block w-full rounded-md border-0 p-1.5 text-primary-900 shadow-sm ring-1 ring-inset ring-primary-900 placeholder:text-secondary-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 ${className}`}
+          className={`text-xl block w-full rounded-md border-0 p-1.5 text-primary-900 shadow-sm ring-1 ring-inset ring-primary-900 placeholder:text-secondary-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 disabled:bg-primary-700 disabled:text-primary-200 ${className}`}
           value={value}
           onChange={onChange}
+          disabled={disabled}
           {...props}
         />
       </div>
     </div>
   );
 }
+
+export default React.forwardRef(InputField);

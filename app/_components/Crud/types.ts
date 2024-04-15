@@ -1,8 +1,21 @@
 export type CrudItemFieldType = {
   name: string;
   label: string;
-  type: "number" | "boolean" | "string" | "datetime" | "image" | "text";
+  type:
+    | "number"
+    | "boolean"
+    | "string"
+    | "datetime"
+    | "image"
+    | "text"
+    | "reference";
   editable?: boolean;
+  referenceOptions?: {
+    idFieldName?: string;
+    searchApi: string;
+    labelFieldName: string;
+    editLink?: string;
+  };
 };
 
 export type CrudListViewPropsType = {

@@ -1,6 +1,7 @@
 import React from "react";
 import { CrudListItemFieldPropsType } from "@/app/_components/Crud/types";
 import axios from "@/app/_utils/axios";
+import CrudListItemReferenceField from "@/app/_components/Crud/List/Specific/CrudListItemReferenceField";
 
 function CrudListItemField({ item, field }: CrudListItemFieldPropsType) {
   if (field.type === "boolean") {
@@ -21,6 +22,8 @@ function CrudListItemField({ item, field }: CrudListItemFieldPropsType) {
     let text = item[field.name];
     if (text.length > 40) text = text.substring(0, 40) + "...";
     return <p className="max-h-32 max-w-32 overflow-hidden">{text}</p>;
+  } else if (field.type === "reference") {
+    return <CrudListItemReferenceField field={field} item={item} />;
   }
 
   return null;
