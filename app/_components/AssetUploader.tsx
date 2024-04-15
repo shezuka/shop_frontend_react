@@ -91,7 +91,7 @@ function AssetUploader(props: AssetUploaderPropsType) {
           </div>
           {props.showImage && props.value ? (
             <img
-              className="w-32"
+              className="w-52 mt-2"
               src={`${axios.defaults.baseURL}/assets/${props.value}`}
             />
           ) : null}

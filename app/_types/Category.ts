@@ -10,6 +10,12 @@ export type CategoryType = {
 
 export const CategoryFields: CrudItemFieldType[] = [
   {
+    name: "id",
+    label: "ID",
+    type: "number",
+    editable: false,
+  },
+  {
     name: "title",
     label: "Title",
     type: "string",

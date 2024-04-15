@@ -11,6 +11,12 @@ export type CompanyType = {
 
 export const CompanyFields: CrudItemFieldType[] = [
   {
+    name: "id",
+    label: "ID",
+    type: "number",
+    editable: false,
+  },
+  {
     name: "name",
     label: "Name",
     type: "string",
