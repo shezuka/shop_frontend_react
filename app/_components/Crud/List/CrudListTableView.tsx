@@ -1,7 +1,8 @@
 import React from "react";
 import { CrudListViewPropsType } from "@/app/_components/Crud/types";
-import CrudListItemTextField from "@/app/_components/Crud/List/CrudListItemTextField";
+import CrudListItemField from "@/app/_components/Crud/List/CrudListItemField";
 import Button from "@/app/_components/Button";
+import CrudListTableItem from "@/app/_components/Crud/List/CrudListTableItem";
 
 function CrudListTableView(props: CrudListViewPropsType) {
   const actions: string[] = [];
@@ -9,7 +10,6 @@ function CrudListTableView(props: CrudListViewPropsType) {
   if (props.onDeleteClick) actions.push("delete");
 
   const thClasses = "py-2";
-  const tdClasses = "px-4 py-2";
   return (
     <div className="relative">
       <table className="w-full table-auto">
@@ -25,41 +25,13 @@ function CrudListTableView(props: CrudListViewPropsType) {
         </thead>
         <tbody>
           {props.items.map((it) => (
-            <tr key={it.id} className="hover:bg-primary-200">
-              {props.fields.map((field) => (
-                <td key={field.name} className={tdClasses}>
-                  <CrudListItemTextField item={it} field={field} />
-                </td>
-              ))}
-              {actions.length ? (
-                <td>
-                  <div className="flex flex-row">
-                    {actions.includes("edit") ? (
-                      <Button
-                        size="sm"
-                        className="flex-1"
-                        onClick={() =>
-                          props.onEditClick && props.onEditClick(it)
-                        }
-                      >
-                        Edit
-                      </Button>
-                    ) : null}
-                    {actions.includes("delete") ? (
-                      <Button
-                        size="sm"
-                        className="flex-1 bg-red-600 hover:bg-red-700"
-                        onClick={() =>
-                          props.onDeleteClick && props.onDeleteClick(it)
-                        }
-                      >
-                        Delete
-                      </Button>
-                    ) : null}
-                  </div>
-                </td>
-              ) : null}
-            </tr>
+            <CrudListTableItem
+              key={it.id}
+              item={it}
+              fields={props.fields}
+              onEditClick={props.onEditClick}
+              onDeleteClick={props.onDeleteClick}
+            />
           ))}
         </tbody>
       </table>

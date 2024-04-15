@@ -3,6 +3,7 @@
 import React from "react";
 import { CrudEditItemFieldPropsType } from "@/app/_components/Crud/types";
 import InputField from "@/app/_components/InputField";
+import AssetUploader from "@/app/_components/AssetUploader";
 
 function CrudManageItemField({
   field,
@@ -24,8 +25,9 @@ function CrudManageItemField({
     );
   }
 
-  let InputElement = InputField;
+  let InputElement: any = InputField;
   let inputType = "text";
+  let accept = "image/png,image/jpeg,image/jpg";
   let inputHandler = (e: React.ChangeEvent<HTMLInputElement>) =>
     onFieldChange(field.name, e.target.value);
 
@@ -42,15 +44,23 @@ function CrudManageItemField({
       typeof value === "string"
         ? new Date(value).toLocaleString()
         : new Date().toLocaleString();
+  } else if (field.type === "image") {
+    InputElement = AssetUploader;
+    inputHandler = (newImageId) => onFieldChange(field.name, newImageId);
   }
 
   return (
-    <InputElement
-      label={field.label}
-      type={inputType}
-      value={value}
-      onChange={inputHandler}
-    />
+    <div className="my-1">
+      <InputElement
+        label={field.label}
+        type={inputType}
+        value={value}
+        onChange={inputHandler}
+        accept={accept}
+        showImage
+        removable
+      />
+    </div>
   );
 }
 

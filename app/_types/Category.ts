@@ -15,6 +15,11 @@ export const CategoryFields: CrudItemFieldType[] = [
     type: "string",
   },
   {
+    name: "image_id",
+    label: "Image",
+    type: "image",
+  },
+  {
     name: "created_at",
     label: "Created at",
     type: "datetime",
