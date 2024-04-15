@@ -1,7 +1,7 @@
 export type CrudItemFieldType = {
   name: string;
   label: string;
-  type: "number" | "boolean" | "string" | "datetime" | "image";
+  type: "number" | "boolean" | "string" | "datetime" | "image" | "text";
   editable?: boolean;
 };
 

@@ -4,6 +4,8 @@ import React from "react";
 import { CrudEditItemFieldPropsType } from "@/app/_components/Crud/types";
 import InputField from "@/app/_components/InputField";
 import AssetUploader from "@/app/_components/AssetUploader";
+import { Input } from "postcss";
+import TextArea from "@/app/_components/TextArea";
 
 function CrudManageItemField({
   field,
@@ -47,6 +49,8 @@ function CrudManageItemField({
   } else if (field.type === "image") {
     InputElement = AssetUploader;
     inputHandler = (newImageId) => onFieldChange(field.name, newImageId);
+  } else if (field.type === "text") {
+    InputElement = TextArea;
   }
 
   return (

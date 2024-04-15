@@ -17,6 +17,10 @@ function CrudListItemField({ item, field }: CrudListItemFieldPropsType) {
         src={`${axios.defaults.baseURL}/assets/${item[field.name]}`}
       />
     );
+  } else if (field.type === "text") {
+    let text = item[field.name];
+    if (text.length > 40) text = text.substring(0, 40) + "...";
+    return <p className="max-h-32 max-w-32 overflow-hidden">{text}</p>;
   }
 
   return null;

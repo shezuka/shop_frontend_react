@@ -34,6 +34,7 @@ function AdminCabinetLayout({
           <Sidebar>
             <SidebarButton link="/admin/dashboard">Dashboard</SidebarButton>
             <SidebarButton link="/admin/categories">Categories</SidebarButton>
+            <SidebarButton link="/admin/companies">Companies</SidebarButton>
           </Sidebar>
         </div>
         <div className="overflow-auto w-full p-1 flex flex-col">{children}</div>
