@@ -5,13 +5,15 @@ import InputField from "@/app/_components/InputField";
 import axios from "@/app/_utils/axios";
 
 type ApiAutocompletePropsType = {
-  label: string;
+  label?: string;
   value: number | undefined | null;
   onChange: (newAssetId: number | null) => void;
   searchApi: string;
-  idFieldName: string;
+  idFieldName?: string;
   labelFieldName: string;
   exceptIds?: number[];
+  className?: string;
+  placeholder?: string;
 };
 
 function ApiAutocomplete(props: ApiAutocompletePropsType) {
@@ -125,13 +127,15 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
   }, [inputFocused, fieldValue, props.searchApi, exceptIds]);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative w-full">
       <InputField
         ref={inputRef}
         label={props.label}
         value={fieldValue}
         onChange={onChange}
         disabled={loading}
+        className={props.className}
+        placeholder={props.placeholder}
       />
       <div className="absolute z-50 w-full top-full">
         {inputFocused &&

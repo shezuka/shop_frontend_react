@@ -7,7 +7,12 @@ import { useRouter } from "next/navigation";
 function SidebarButton({
   children,
   link,
-}: Readonly<{ children?: React.ReactNode; link?: string }>) {
+  variant = "primary",
+}: Readonly<{
+  children?: React.ReactNode;
+  link?: string;
+  variant?: "primary" | "secondary" | "primary-light";
+}>) {
   const router = useRouter();
 
   const onClick = React.useCallback(() => {
@@ -17,7 +22,7 @@ function SidebarButton({
 
   return (
     <Button
-      variant="primary"
+      variant={variant}
       size="lg"
       className="rounded-none"
       fullWidth

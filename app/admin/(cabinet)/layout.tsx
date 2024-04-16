@@ -2,7 +2,7 @@
 
 import React from "react";
 import adminAuthorized from "@/app/_lib/AdminAuthorized";
-import Header from "@/app/_components/Header";
+import AdminHeader from "@/app/_components/AdminHeader";
 import Button from "@/app/_components/Button";
 import { DeleteAccessToken } from "@/app/_lib/UserToken";
 import { useRouter } from "next/navigation";
@@ -21,14 +21,14 @@ function AdminCabinetLayout({
 
   return (
     <div className="overflow-hidden flex flex-col absolute top-0 bottom-0 right-0 left-0">
-      <Header>
+      <AdminHeader>
         <div className="flex justify-between justify-items-center">
           <h2 className="text-lg">Admin</h2>
           <Button variant="secondary" onClick={onLogout}>
             Logout
           </Button>
         </div>
-      </Header>
+      </AdminHeader>
       <div className="relative flex flex-1 flex-row overflow-hidden">
         <div className="overflow-auto">
           <Sidebar>

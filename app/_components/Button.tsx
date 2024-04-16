@@ -5,7 +5,7 @@ export type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 > & {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "primary-light";
   size?: "sm" | "md" | "lg";
   fullWidth?: boolean;
   disabled?: boolean;
@@ -55,6 +55,8 @@ const Button: React.FC<ButtonProps> = ({
       `bg-secondary-${active ? "900" : "700"}`,
       `hover:bg-secondary-${active ? "950" : "800"}`,
     );
+  } else if (variant === "primary-light") {
+    classes.push(`bg-primary-100`, `hover:bg-primary-200`, "text-primary-800");
   }
 
   if (size === "sm") {
