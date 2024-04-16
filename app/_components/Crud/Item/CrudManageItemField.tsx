@@ -4,7 +4,6 @@ import React from "react";
 import { CrudEditItemFieldPropsType } from "@/app/_components/Crud/types";
 import InputField from "@/app/_components/InputField";
 import AssetUploader from "@/app/_components/AssetUploader";
-import { Input } from "postcss";
 import TextArea from "@/app/_components/TextArea";
 import ApiAutocomplete from "@/app/_components/ApiAutocomplete";
 
@@ -51,6 +50,10 @@ function CrudManageItemField({
   } else if (field.type === "image") {
     InputElement = AssetUploader;
     inputHandler = (newImageId) => onFieldChange(field.name, newImageId);
+    additionalProps = {
+      removable: true,
+      showImage: true,
+    };
   } else if (field.type === "text") {
     InputElement = TextArea;
   } else if (field.type === "reference") {
@@ -72,8 +75,6 @@ function CrudManageItemField({
         value={value}
         onChange={inputHandler}
         accept={accept}
-        showImage
-        removable
         {...additionalProps}
       />
     </div>
