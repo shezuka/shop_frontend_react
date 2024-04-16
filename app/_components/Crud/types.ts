@@ -15,6 +15,7 @@ export type CrudItemFieldType = {
     searchApi: string;
     labelFieldName: string;
     editLink?: string;
+    excludeSelfId?: boolean;
   };
 };
 

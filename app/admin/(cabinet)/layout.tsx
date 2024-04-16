@@ -33,6 +33,7 @@ function AdminCabinetLayout({
         <div className="overflow-auto">
           <Sidebar>
             <SidebarButton link="/admin/dashboard">Dashboard</SidebarButton>
+            <SidebarButton link="/admin/products">Products</SidebarButton>
             <SidebarButton link="/admin/categories">Categories</SidebarButton>
             <SidebarButton link="/admin/companies">Companies</SidebarButton>
           </Sidebar>

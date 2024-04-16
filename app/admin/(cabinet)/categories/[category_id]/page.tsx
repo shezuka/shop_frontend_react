@@ -7,7 +7,7 @@ function CategoryPage({
 }: Readonly<{ params: { category_id: string } }>) {
   return (
     <CrudEditItem
-      itemId={parseInt(params.category_id)}
+      itemId={parseInt(params.product_id)}
       pageTitle={"Edit category"}
       fields={CategoryFields}
       getItemApiUrl={"/admin/categories"}

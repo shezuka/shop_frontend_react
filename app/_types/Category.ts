@@ -28,6 +28,7 @@ export const CategoryFields: CrudItemFieldType[] = [
       labelFieldName: "title",
       searchApi: "/admin/categories",
       editLink: "/admin/categories",
+      excludeSelfId: true,
     },
   },
   {

@@ -59,7 +59,9 @@ function CrudManageItemField({
       onFieldChange(field.name, newReferenceId);
     additionalProps = field.referenceOptions;
     additionalProps.exceptIds = [];
-    if (item.id) additionalProps.exceptIds.push(item.id);
+    if (item.id && field.referenceOptions?.excludeSelfId === true) {
+      additionalProps.exceptIds.push(item.id);
+    }
   }
 
   return (

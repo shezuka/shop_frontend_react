@@ -17,6 +17,7 @@ type ApiAutocompletePropsType = {
 function ApiAutocomplete(props: ApiAutocompletePropsType) {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [exceptIds, setExceptIds] = useState<number[]>([]);
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [loading, setLoading] = useState(typeof props.value === "number");
   const [fieldValue, setFieldValue] = useState("");
@@ -46,6 +47,7 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
   }, []);
 
   React.useEffect(() => {
+    console.log(321);
     if (typeof props.value !== "number") return;
 
     let cancel = false;
@@ -74,6 +76,27 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
   }, [selectedItem, props.labelFieldName, idFieldName]);
 
   React.useEffect(() => {
+    if (!props.exceptIds) {
+      if (exceptIds.length > 0) {
+        setExceptIds([]);
+      }
+      return;
+    }
+
+    if (exceptIds.length !== props.exceptIds.length) {
+      setExceptIds(props.exceptIds);
+      return;
+    }
+
+    for (let i = 0; i < exceptIds.length; i++) {
+      if (exceptIds[i] !== props.exceptIds[i]) {
+        setExceptIds(props.exceptIds);
+        return;
+      }
+    }
+  }, [exceptIds, props.exceptIds]);
+
+  React.useEffect(() => {
     if (!fieldValue) {
       setOptions([]);
       return;
@@ -87,7 +110,7 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
             offset: 0,
             limit: 30,
             q: fieldValue,
-            except_ids: props.exceptIds,
+            except_ids: exceptIds,
           },
         })
         .then((resp) => {
@@ -100,7 +123,7 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
       clearTimeout(timeoutInstance);
       cancel = true;
     };
-  }, [fieldValue, props.searchApi, props.exceptIds]);
+  }, [fieldValue, props.searchApi, exceptIds]);
 
   return (
     <div ref={containerRef} className="relative">
@@ -111,7 +134,7 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
         onChange={onChange}
         disabled={loading}
       />
-      <div className="absolute w-full top-full">
+      <div className="absolute z-50 w-full top-full">
         {inputFocused &&
           options.map((it) => (
             <div
