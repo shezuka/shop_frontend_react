@@ -47,7 +47,6 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
   }, []);
 
   React.useEffect(() => {
-    console.log(321);
     if (typeof props.value !== "number") return;
 
     let cancel = false;
@@ -97,7 +96,7 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
   }, [exceptIds, props.exceptIds]);
 
   React.useEffect(() => {
-    if (!fieldValue) {
+    if (!inputFocused) {
       setOptions([]);
       return;
     }
@@ -123,7 +122,7 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
       clearTimeout(timeoutInstance);
       cancel = true;
     };
-  }, [fieldValue, props.searchApi, exceptIds]);
+  }, [inputFocused, fieldValue, props.searchApi, exceptIds]);
 
   return (
     <div ref={containerRef} className="relative">
