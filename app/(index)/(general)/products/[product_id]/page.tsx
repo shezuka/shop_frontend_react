@@ -2,7 +2,6 @@
 
 import React from "react";
 import ProductDataFetch from "@/app/_components/ProductDataFetch";
-import Card from "@/app/_components/Card";
 import axios from "@/app/_utils/axios";
 import LoaderSpinner from "@/app/_components/Loader/LoaderSpinner";
 

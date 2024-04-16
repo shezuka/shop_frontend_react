@@ -137,7 +137,7 @@ function ApiAutocomplete(props: ApiAutocompletePropsType) {
         className={props.className}
         placeholder={props.placeholder}
       />
-      <div className="absolute z-50 w-full top-full">
+      <div className="absolute z-1 w-full top-full">
         {inputFocused &&
           options.map((it) => (
             <div
