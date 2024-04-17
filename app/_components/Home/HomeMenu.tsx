@@ -17,7 +17,7 @@ function HomeMenu() {
       key={link.link}
       type="button"
       className="relative px-4 py-3 bg-transparent text-primary-100 font-bold"
-      onClick={() => onClick(link.link)}
+      onClick={() => onClick(link)}
     >
       <div
         className={`absolute top-0 left-0 right-0 bottom-0 bg-primary-300 opacity-30 hover:bg-primary-600 hover:opacity-40 ${index === 0 ? "rounded-l-md" : ""} ${index === SiteLinks.length - 1 ? "rounded-r-md" : ""}`}
