@@ -10,13 +10,14 @@ import { useRouter } from "next/navigation";
 type ModelsViewPagePropsType = {
   apiUri: string;
   fields: CrudItemFieldType[];
-  onClickRedirectUri: string;
+  onClickRedirectUri?: string;
 };
 
 function ModelViewPage(props: ModelsViewPagePropsType) {
   const router = useRouter();
 
   function onItemClick(item: any) {
+    if (!props.onClickRedirectUri) return;
     router.push(`${props.onClickRedirectUri}/${item.id}`);
   }
 
@@ -31,7 +32,7 @@ function ModelViewPage(props: ModelsViewPagePropsType) {
           <div className="w-full">
             <ModelDataView
               value={value}
-              onItemClick={onItemClick}
+              onItemClick={props.onClickRedirectUri ? onItemClick : undefined}
               fields={props.fields}
             />
           </div>
