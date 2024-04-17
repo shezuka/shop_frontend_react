@@ -7,6 +7,9 @@ import { ProductType } from "@/app/_types/Product";
 import TopProductsData from "@/app/_components/Product/TopProductsData";
 import ProductCard from "@/app/_components/Product/ProductCard";
 import { useRouter } from "next/navigation";
+import SiteLinks from "@/app/_data/SiteLinks";
+import Link from "next/link";
+import HomeMenu from "@/app/_components/Home/HomeMenu";
 
 function HomePage() {
   const router = useRouter();
@@ -19,6 +22,16 @@ function HomePage() {
         height={1024}
         src="/assets/images/home-page-logo.webp"
       />
+      <div
+        className="absolute left-0 right-0 flex flex-row justify-center"
+        style={{ top: "10%" }}
+      >
+        <div className="relative">
+          <div className="relative z-10">
+            <HomeMenu />
+          </div>
+        </div>
+      </div>
       <div
         className="absolute w-full bg-primary-100 py-2 px-3 md:py-3 md:px-5 lg:py-5 lg:px-30"
         style={{ top: "90%" }}

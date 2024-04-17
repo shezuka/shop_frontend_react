@@ -35,7 +35,6 @@ const Button: React.FC<ButtonProps> = ({
     "px-4",
     "py-2",
     "font-medium",
-    "text-white",
     "transition",
     "duration-150",
     "ease-in-out",
@@ -49,11 +48,13 @@ const Button: React.FC<ButtonProps> = ({
     classes.push(
       `bg-primary-${active ? "800" : "500"}`,
       `hover:bg-primary-${active ? "900" : "600"}`,
+      "text-white",
     );
   } else if (variant === "secondary") {
     classes.push(
       `bg-secondary-${active ? "900" : "700"}`,
       `hover:bg-secondary-${active ? "950" : "800"}`,
+      "text-white",
     );
   } else if (variant === "primary-light") {
     classes.push(`bg-primary-100`, `hover:bg-primary-200`, "text-primary-800");

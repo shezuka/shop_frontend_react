@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "@/app/_components/Sidebar/Sidebar";
 import SidebarButton from "@/app/_components/Sidebar/SidebarButton";
+import SiteLinks from "@/app/_data/SiteLinks";
 
 function GeneralLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,6 +12,15 @@ function GeneralLayout({ children }: { children: React.ReactNode }) {
             <SidebarButton variant="primary-light" link="/">
               Home
             </SidebarButton>
+            {SiteLinks.map((link) => (
+              <SidebarButton
+                key={link.link}
+                link={link.link}
+                variant="primary-light"
+              >
+                {link.label}
+              </SidebarButton>
+            ))}
           </Sidebar>
         </div>
         <div className="w-full">{children}</div>
