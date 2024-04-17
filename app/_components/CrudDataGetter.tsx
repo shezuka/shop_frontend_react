@@ -26,6 +26,7 @@ function CrudDataGetter(props: CrudDataGetter) {
         },
       })
       .then((resp) => {
+        if (cancel) return;
         setValue(resp.data);
       });
 
