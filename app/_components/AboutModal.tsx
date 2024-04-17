@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import Modal from "@/app/_components/modal";
+import Modal from "@/app/_components/Modal";
 import Button from "@/app/_components/Button";
+import ClipboardText from "@/app/_components/ClipboardText";
 
 type AboutModalPropsType = Readonly<{}>;
 
@@ -26,6 +27,11 @@ function AboutModal(props: AboutModalPropsType) {
         <p>
           This is not a web-store. This is portfolio sample web-site sample
           developed by Dmytro Horbalynskyi.
+          <br />
+          It is sandbox project so you can do whatever you want with it.
+          <br />
+          Admin panel login and password:{" "}
+          <ClipboardText>dihordev</ClipboardText>
         </p>
         <div className="mt-2">
           <Button size="md" className="w-full" onClick={handleClose}>

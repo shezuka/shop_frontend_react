@@ -8,6 +8,7 @@ import { DeleteAccessToken } from "@/app/_lib/UserToken";
 import { useRouter } from "next/navigation";
 import Sidebar from "@/app/_components/Sidebar/Sidebar";
 import SidebarButton from "@/app/_components/Sidebar/SidebarButton";
+import Link from "next/link";
 
 function AdminCabinetLayout({
   children,
@@ -24,9 +25,17 @@ function AdminCabinetLayout({
       <AdminHeader>
         <div className="flex justify-between justify-items-center">
           <h2 className="text-lg">Admin</h2>
-          <Button variant="secondary" onClick={onLogout}>
-            Logout
-          </Button>
+          <div className="flex flex-row">
+            <Link
+              className="ml-2 p-2 bg-primary-950 rounded-md hover:bg-primary-800 transition-all"
+              href={"/"}
+            >
+              Home page
+            </Link>
+            <Button variant="secondary" onClick={onLogout}>
+              Logout
+            </Button>
+          </div>
         </div>
       </AdminHeader>
       <div className="relative flex flex-1 flex-row overflow-hidden">

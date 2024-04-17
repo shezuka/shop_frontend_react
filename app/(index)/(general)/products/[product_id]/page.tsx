@@ -18,6 +18,9 @@ const ProductPage = ({ params }: ProductPagePropsType) => {
         productData ? (
           // Product data view
           <>
+            <h1 className="font-bold text-primary-100 mb-2 p-2 bg-primary-900">
+              {productData.name}
+            </h1>
             <div className="flex flex-col md:flex-row">
               <div className="flex flex-col md:w-1/3 lg:w-1/4">
                 <div>
@@ -28,12 +31,7 @@ const ProductPage = ({ params }: ProductPagePropsType) => {
                 </div>
               </div>
               <div className="flex-1 ml-0 md:ml-2">
-                <div>
-                  <h1 className="font-bold text-primary-100 p-2 bg-primary-900">
-                    {productData.name}
-                  </h1>
-                </div>
-                <div className="bg-primary-200 shadow-md mt-2">
+                <div className="bg-primary-200 shadow-md mt-2 md:mt-0">
                   <h2 className="bg-primary-600 font-bold p-2 text-primary-200">
                     Description
                   </h2>

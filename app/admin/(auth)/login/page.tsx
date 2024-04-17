@@ -86,7 +86,7 @@ export default function AdminLoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit" fullWidth variant="secondary">
+          <Button type="submit" fullWidth variant="primary">
             Submit
           </Button>
         </form>
