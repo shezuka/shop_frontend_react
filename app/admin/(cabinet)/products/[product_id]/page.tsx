@@ -5,7 +5,7 @@ import { ProductFields } from "@/app/_types/Product";
 function ProductPage({ params }: Readonly<{ params: { product_id: string } }>) {
   return (
     <CrudEditItem
-      itemId={parseInt(params.category_id)}
+      itemId={parseInt(params.product_id)}
       pageTitle={"Edit product"}
       fields={ProductFields}
       getItemApiUrl={"/admin/products"}
